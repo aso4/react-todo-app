@@ -12,16 +12,26 @@ var Todo = function (_React$Component) {
   function Todo(props) {
     _classCallCheck(this, Todo);
 
-    // console.log(props);
-
     var _this = _possibleConstructorReturn(this, (Todo.__proto__ || Object.getPrototypeOf(Todo)).call(this, props));
 
     _this.state = { done: _this.props.done == "true" && props.done,
       text: props.text };
+
+    _this.handleClick = _this.handleClick.bind(_this); // very important
     return _this;
   }
 
   _createClass(Todo, [{
+    key: "handleClick",
+    value: function handleClick(event) {
+      // ES6 syntax
+      this.setState(function (state) {
+        return { // state passed in to function
+          done: !state.done
+        };
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
 
@@ -31,7 +41,7 @@ var Todo = function (_React$Component) {
         React.createElement(
           "span",
           null,
-          React.createElement("input", { type: "checkbox", checked: this.state.done }),
+          React.createElement("input", { type: "checkbox", checked: this.state.done, onClick: this.handleClick }),
           React.createElement("input", { type: "text", value: this.state.text })
         )
       );
