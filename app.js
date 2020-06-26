@@ -19,6 +19,7 @@ var Todo = function (_React$Component) {
 
     _this.handleClick = _this.handleClick.bind(_this); // very important
     _this.handleChange = _this.handleChange.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
     return _this;
   }
 
@@ -30,6 +31,8 @@ var Todo = function (_React$Component) {
         return { // state passed in to function
           done: !state.done
         };
+      }, function (event) {
+        this.handleSubmit(event);
       });
     }
   }, {
@@ -44,6 +47,13 @@ var Todo = function (_React$Component) {
       });
     }
   }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      // this.setState(state => ({
+      console.log("This is where submit will happen"); // placeholder due to no backend
+      // }))
+    }
+  }, {
     key: "render",
     value: function render() {
 
@@ -53,8 +63,11 @@ var Todo = function (_React$Component) {
         React.createElement(
           "span",
           null,
-          React.createElement("input", { type: "checkbox", checked: this.state.done, onClick: this.handleClick }),
-          React.createElement("input", { type: "text", value: this.state.text, onChange: this.handleChange })
+          React.createElement("input", { type: "checkbox", checked: this.state.done,
+            onClick: this.handleClick }),
+          React.createElement("input", { type: "text", value: this.state.text,
+            onChange: this.handleChange,
+            onBlur: this.handleSubmit })
         )
       );
     }
