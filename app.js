@@ -18,6 +18,7 @@ var Todo = function (_React$Component) {
       text: props.text };
 
     _this.handleClick = _this.handleClick.bind(_this); // very important
+    _this.handleChange = _this.handleChange.bind(_this);
     return _this;
   }
 
@@ -32,6 +33,17 @@ var Todo = function (_React$Component) {
       });
     }
   }, {
+    key: "handleChange",
+    value: function handleChange(event) {
+      var text = event.target.value; // wherever the element is handling event, it will have DOM object for target and value
+
+      this.setState(function (state) {
+        return {
+          text: text
+        };
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
 
@@ -42,7 +54,7 @@ var Todo = function (_React$Component) {
           "span",
           null,
           React.createElement("input", { type: "checkbox", checked: this.state.done, onClick: this.handleClick }),
-          React.createElement("input", { type: "text", value: this.state.text })
+          React.createElement("input", { type: "text", value: this.state.text, onChange: this.handleChange })
         )
       );
     }
