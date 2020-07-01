@@ -53,7 +53,7 @@ var Todo = function (_React$Component) {
       var id = this.props.id || this.state._id;
 
       if (id == "" || id == undefined) {
-        fetch('http://localhost:3000/todos', {
+        fetch('http://localhost:3000/todos/', {
           method: 'post',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
